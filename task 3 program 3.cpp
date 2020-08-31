@@ -29,10 +29,12 @@ int specialSieve(int n)
 	// Print the generated array 
 //	for (int i = 2; i <= n; i++) 
 		//cout << prime[i] << " ";
-		
+	
 		sort(prime, prime+n);
 		int sum = prime[2],b=prime[2];
-		for (int i = 2; i < n; i++)
+		if(n%2!=0)
+		{
+		for (int i = 2; i <=n; i++)
 		{
 			if(b != prime[i])
 			{
@@ -40,16 +42,28 @@ int specialSieve(int n)
 				b=prime[i];
 			}
 		}
+	}
+	if(n%2==0)
+		{
+		for (int i = 2; i <n; i++)
+		{
+			if(b != prime[i])
+			{
+				sum = sum + prime[i];
+				b=prime[i];
+			}
+		}
+	}
 	return sum;	 
 } 
 
 // Driver code 
 int main() 
 { 
+
 	int n; 
 cin>>n;
 	cout << specialSieve(n); 
 
 	return 0; 
 } 
-
